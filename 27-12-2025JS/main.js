@@ -35,17 +35,17 @@ let student = {name: "Tran Nhu Suong", age: 19, scores:[9, 9, 10]}
 console.log(student)
 
 // Part 4
-let a = "1000"
+let total = "1000"
 a = Number(a)
 console.log(a)
 console.log(typeof a)
 
-let c = 1000
+let number = 1000
 c = String(c)
 console.log(c)
 console.log(typeof c)
 
-let x = true
+let isDoctor = true
 x = String(x)
 console.log(x)
 console.log(typeof x)
