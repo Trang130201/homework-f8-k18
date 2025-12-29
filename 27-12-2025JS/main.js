@@ -65,5 +65,5 @@ console.log(numbers[0])
 console.log(numbers[4])
 
 
-When assigning: const a = numbers;
-numbers is already stored in a memory location. When assigning a = numbers, a shares the same memory location as numbers.
+// When assigning: const a = numbers;
+// numbers is already stored in a memory location. When assigning a = numbers, a shares the same memory location as numbers.
