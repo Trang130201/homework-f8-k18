@@ -1,5 +1,5 @@
 // Part 1:
-function classifyScore(studentScore){
+function getStudentLevel(studentScore){
     if (studentScore < 0 || studentScore > 10){
         return "Invalid score"
     }
@@ -51,10 +51,10 @@ function getDaysInMonth (month){
 console.log(getDaysInMonth(2))
 
 // Part 3:
-const evenOddCheck = (n) => n % 2 === 0 ? "Even" : "Odd" 
+const isEvenNumber = (n) => n % 2 === 0 ? "Even" : "Odd" 
 
 // Part 4:
-function calculateTicketPrice(age){
+function getTicketPriceByAge(age){
     let ticketPrice = age <13 ? 50000 : 100000
     return ticketPrice
 }
@@ -65,7 +65,7 @@ function toFahrenheit(c){
 }
 
 // Part 6:
-function caculateElectricBill(kwH){
+function getElectricityBill(kwH){
     if (kwH < 0){
         return "Invalid input"
     }
