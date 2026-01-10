@@ -1,7 +1,7 @@
 
 // Part 1:
 
-function classifyTriangle(sideA, sideB, sideC) {
+function getTriangleType(sideA, sideB, sideC) {
     if (sideA + sideB <=sideC || sideA + sideC <=sideB || sideB + sideC <=sideA) {
         return "Not a triangel"
     }
