@@ -69,14 +69,12 @@ function getTopRevenueProduct (products, orders) {
     }
 
 
-    let topProductName = null
     for (const product of products) {
         if (product.id === Number(topProductId)) {
-            topProductName = product.name
+            return product.name
         }
-    }
-    return topProductName
-    }
+    }     
+  }
     
     const topProduct = getTopRevenueProduct (products, orders)
     console.log('Top revenue product:', topProduct)
