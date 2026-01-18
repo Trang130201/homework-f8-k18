@@ -71,7 +71,7 @@ function getTopRevenueProduct (products, orders) {
 
     for (const product of products) {
         if (product.id === Number(topProductId)) {
-            return product.name
+            return product
         }
     }     
   }
