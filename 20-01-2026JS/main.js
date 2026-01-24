@@ -30,20 +30,36 @@ function createOrder(productId, orderQuantity){
     if (productId === null || orderQuantity === null){
         return "Invalid input"
     }
+
+    // Check positive param
+    if (orderQuantity <= 0){
+        return "Invalid input: must be positive number"
+    }
+
+    // Check type of params
+    if (typeof productId !== "number" || typeof orderQuantity !== "number"){
+        return "Invalid input: must be number"
+    }
+
     // Find product by id
     const product = products.find((product) =>{
         if (productId === product.id){
             return true
         }    
     })
+
     // If product not found
     if (!product) {
         return "Product not found"
     }
+
+
     // Check stock
     if (product.remaining < orderQuantity){
         return "Out of stock"
     }
+
+
     // Get current max order id
     let maxId = 0
     orders.forEach(order => {
@@ -51,6 +67,7 @@ function createOrder(productId, orderQuantity){
             maxId = order.id
         }
     })
+
     // Create new order
     const order ={
         id: maxId + 1,
@@ -68,45 +85,84 @@ function createOrder(productId, orderQuantity){
 
 // Create the updateOrder function
 function updateOrder(orderId, quantity){
+    // Check params are not null
+    if (orderId === null || quantity === null){
+        return "Invalid input"
+    }
+
+    // Check type of params
+    if (typeof orderId !== "number" || typeof quantity !== "number"){
+        return "Invalid input: must be number"
+    }
+
+    // Check valid quantity
+    if (quantity <= 0){
+        return "Invalid input: must be positive number"
+    }
+
     // Find order by id
     const order = orders.find((order) =>{
         if (orderId === order.id){
             return true
         }
     })
+
+    // check order 
+    if(!order) {
+        return "Order not found"
+    }
+
     // Find product by id
     const product = products.find((product) =>{
         if (order.productId === product.id){
             return true
         }
     })
-    // Calculate quantity diff
-    const diff = order.quantity - quantity
-    // Compare stock quantity with quantity dif
-    if(product.remaining < diff){
-        return "out of stock"
+    if (!product) {
+        return "Product not found"
     }
-  
 
+
+    // Calculate quantity diff
+    const diff = quantity - order.quantity
+
+
+    // Compare stock quantity with quantity dif
+    if( diff > 0 && product.remaining < diff){
+        return "Out of stock"
+    }
+   
     // Calculate new remaining
-    product.remaining = product.remaining + diff
-
+    product.remaining = product.remaining - diff
+ 
     // Update quantity
     order.quantity = quantity
+
     return order
 }
 
 
 // Create the deleteOrder function
 function deleteOrder(orderId){
+    // Check params are not null
+    if (orderId === null){
+        return "Invalid input"
+    }
+
+    // Check type of params
+    if (typeof orderId !== "number"){
+        return "Invalid input: must be number"
+    }
+
     // Find order by id
     const order = orders.find((order) =>{
         if(orderId === order.id)
             return true
     })
+
     // check order 
     if(!order) {
-        return "not found"
+        return "Order not found"
     }
     // Create order id map
     const orderIds = orders.map((order) =>{
