@@ -1,22 +1,25 @@
 // ** Task 1:
-// Original object
-const partTime = {
-  id: 2,
-  name: "Binh",
-  salary: 20,
-  hoursWorked: 40
-}
+
 
 // Create interface Parttime
-interface PartTime {
+interface PartTimeI {
     id: number
     name: string
     salary: number
     hoursWorked: number
 }
 
+// Original object
+const partTime: PartTimeI = {
+    id: 2,
+    name: "Binh",
+    salary: 20,
+    hoursWorked: 40
+}
+
+
 // Create new objetc, copy from partTime and override hoursWorked = 45
-const newPartTime: PartTime = {...partTime, hoursWorked: 45}
+const newPartTime: PartTimeI = {...partTime, hoursWorked: 45}
 
 
 // Print resul object
@@ -31,16 +34,17 @@ console.log(newPartTime)
 // 2.1:
 
 // Create interface Employee
-interface Employee {
+interface EmployeeI {
     id: number
     name: string
     salary: number
     getSalary(): number
+    hoursWorked?: number
 }
 
 
 // Fulltime employee class
-class FullTimeEmployee implements Employee {
+class FullTimeEmployee implements EmployeeI {
     id: number
     name: string
     salary: number
@@ -52,7 +56,7 @@ class FullTimeEmployee implements Employee {
 }
 
 // Parttime employee class
-class PartTimeEmployee implements Employee {
+class PartTimeEmployee implements EmployeeI {
     id: number
     name: string
     salary: number
@@ -66,7 +70,7 @@ class PartTimeEmployee implements Employee {
 
 
 // Function to calculate total salary of all employees
-function calculateTotalSalary (employess: Employee[]): number{
+function calculateTotalSalary (employess: EmployeeI[]): number{
     let totalSalary = 0
     for (const employee of employess){
         const salary = employee.getSalary() 
@@ -76,21 +80,21 @@ function calculateTotalSalary (employess: Employee[]): number{
 }
 
 // Create full-time employee 
-const fullTimeEmployee = new FullTimeEmployee()
+const fullTimeEmployee: EmployeeI = new FullTimeEmployee()
 fullTimeEmployee.id = 1
 fullTimeEmployee.name = "Bui Xuan Thu"
 fullTimeEmployee.salary = 9000
 
 
 // Create part-time employee
-const partTimeEmployee = new PartTimeEmployee()
+const partTimeEmployee: EmployeeI = new PartTimeEmployee()
 partTimeEmployee.id = 9
 partTimeEmployee.name = "Nguyen Mai Ha"
 partTimeEmployee.hoursWorked = 5
 partTimeEmployee.salary = 3800
 
 // Array contains all employees 
-const employees: Employee[] = [
+const employees: EmployeeI[] = [
     fullTimeEmployee, partTimeEmployee
 ]
 
