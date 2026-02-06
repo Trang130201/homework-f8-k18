@@ -91,7 +91,7 @@ class Manager extends Employee implements EmployeeI {
 }
 
 // Create instance developer 
-const developer: EmployeeI = new Developer(1, "Linh", -200, 10)
+const developer: EmployeeI = new Developer(1, "Linh", 200, 10)
 console.log(developer) 
 //Developer { id: 1, name: 'Linh', salary: 100, overtimeHours: 10 }
 
