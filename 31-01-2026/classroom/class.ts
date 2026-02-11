@@ -3,8 +3,7 @@ import type { StudentI } from "./student.ts"
 
 // Create an interface ClassI and export it to be used in other files
 export interface ClassI {
-    name: string
-    students: StudentI[]
+    getName:() => string
     addStudent: (student: StudentI) => void
     removeStudent: (student: StudentI) => void
     notifyStudents: (msg: string) => void
@@ -12,13 +11,17 @@ export interface ClassI {
 }
 
 export class Class implements ClassI {
-    name: string
-    students: StudentI[]
+    private name: string
+    private students: StudentI[]
 
     // Create a constructor of the Class with this name and an empty array of students
-    constructor(name: string) {
+    constructor(name: string) {   
         this.name = name
         this.students = []
+    }
+
+    getName(): string {
+        return this.name
     }
 
     // Add student to the students array
@@ -30,7 +33,7 @@ export class Class implements ClassI {
     // Remove student by using filter method and comparing ids
     removeStudent(student: StudentI) {
         this.students = this.students.filter((s) => {
-           return s.id !== student.id
+           return s.getId() !== student.getId()
         })  
     }
 
