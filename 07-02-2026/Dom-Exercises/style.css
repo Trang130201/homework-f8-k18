@@ -1,0 +1,10 @@
+hr {
+    margin: 30px 0;
+    border: 1px solid black;
+}
+    
+.exercise{
+    border: 2px solid #a72828;
+    padding: 10px;
+    margin-bottom: 40px;
+}
